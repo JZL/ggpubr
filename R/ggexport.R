@@ -67,6 +67,9 @@ ggexport <- function(..., plotlist = NULL, filename = NULL, ncol = NULL, nrow = 
     if(!missing(width)) dev.opts <- dev.opts %>% .add_item(width = width)
     if(!missing(height)) dev.opts <- dev.opts %>% .add_item(height = height)
     if(!missing(pointsize)) dev.opts <- dev.opts %>% .add_item(pointsize = pointsize)
+
+    # For geom_point uses dingbats, which breaks in adobe illustrator (on MacOS)
+    dev.opts <- dev.opts %>% .add_item(useDingbats = F)
   }
 
   #width=800, height=800, pointsize=8, res=250
